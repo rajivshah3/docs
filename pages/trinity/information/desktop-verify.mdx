@@ -1,7 +1,7 @@
 import { withRouter } from 'next/router'
-import WithMDX from '../../lib/with-mdx'
-import { lewi } from '../../lib/data/team'
-import Image from '../../components/image'
+import WithMDX from '../../../lib/with-mdx'
+import { rajiv } from '../../../lib/data/team'
+import Image from '../../../components/image'
 
 export const page = {
 title: 'Verifying Trinity Desktop',
@@ -11,3 +11,27 @@ editUrl: 'pages/trinity/desktop-verify.mdx',
 }
 
 export default withRouter(props => WithMDX(props, page))
+
+There are a few ways to verify the authenticity of Trinity Desktop. This helps
+you ensure that your copy of the app is the same as the one that was uploaded to GitHub.
+By following the steps below, you can ensure that your copy was not corrupted
+or otherwise tampered with.
+
+### Windows
+
+* Verify the SHA256 hash:
+    1. Open Command Prompt
+    2. Run `certUtil -hashfile path\\to\\trinity-desktop-version.exe SHA256` (for example,
+    if the exe for Trinity 0.3.2 is in `C:\\Users\\yourname\\Downloads`, run
+     `certUtil -hashfile C:\\Users\\yourname\\Downloads\\trinity-desktop-0.3.2.exe SHA256`)
+        1. Verify that the hash in the [release notes](https://github.com/iotaledger/trinity-wallet/releases/latest)
+        matches the output shown in Command Prompt
+
+* Verify the code signature:
+    1. Right-click on trinity-desktop-version.exe
+    2. Click the "Digital Signatures" tab, then click "Details", then click "View Certificate"
+        a. In the "Certification Path" tab, ensure that the the following information matches the path shown on your screen:
+            i. DigiCert
+            ii. DigiCert SHA2 Assured Code Signing CA
+            iii. IOTA Stiftung
+        b. Ensure that "Certificate status" says "This certificate is OK."
