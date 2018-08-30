@@ -1,0 +1,13 @@
+import { withRouter } from 'next/router'
+import WithMDX from '../../lib/with-mdx'
+import { lewi } from '../../lib/data/team'
+import Image from '../../components/image'
+
+export const page = {
+title: 'Verifying Trinity Desktop',
+date: '30 Aug 2018',
+authors: [rajiv],
+editUrl: 'pages/trinity/desktop-verify.mdx',
+}
+
+export default withRouter(props => WithMDX(props, page))
